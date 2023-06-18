@@ -3,6 +3,11 @@
     "target": "ES2022",
     "outDir": "./dist",
     "rootDir": "./src",
-    "module": "CommonJS"
-  }
+    "module": "CommonJS",
+    "sourceMap": true
+  },
+  "include": [
+    "./src/**/*",
+    "./tests/**/*"
+  ]
 }
