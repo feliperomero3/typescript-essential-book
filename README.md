@@ -10,3 +10,10 @@ Once the core features are in place, I will add support for storing data persist
 
 1. Node.js 14
 1. TypeScript 5
+
+## Getting Started
+
+1. Clone this repository.
+1. Run `npm install` from the root directory.
+1. Run `npm run build` from the root directory.
+1. Run `npm start` from the root directory.
