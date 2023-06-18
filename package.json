@@ -1,0 +1,26 @@
+{
+  "name": "todo-list",
+  "version": "0.1.0-preview",
+  "description": "A simple to-do list application.",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feliperomero3/typescript-essential-book.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Felipe Romero",
+  "license": "MIT",
+  "bugs": {
+    "type": "git",
+    "url": "https://github.com/feliperomero3/typescript-essential-book/issues"
+  },
+  "homepage": "https://github.com/feliperomero3/typescript-essential-book#readme"
+}
