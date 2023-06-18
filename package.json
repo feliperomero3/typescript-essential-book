@@ -3,6 +3,7 @@
   "version": "0.1.0-preview",
   "description": "A simple to-do list application.",
   "main": "src/index.ts",
+  "type": "commonjs",
   "engines": {
     "node": ">= 14"
   },
@@ -25,5 +26,8 @@
     "type": "git",
     "url": "https://github.com/feliperomero3/typescript-essential-book/issues"
   },
-  "homepage": "https://github.com/feliperomero3/typescript-essential-book#readme"
+  "homepage": "https://github.com/feliperomero3/typescript-essential-book#readme",
+  "dependencies": {
+    "inquirer": "^9.2.7"
+  }
 }
