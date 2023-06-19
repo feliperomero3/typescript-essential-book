@@ -1,6 +1,6 @@
 # Essential TypeScript
 
-A simple to-do list application.
+A simple to-do list console application.
 
 >The application will display a list of tasks, allow new tasks to be created, and allow existing tasks to be marked as complete.
 There will also be a filter to include already completed tasks in the list.
@@ -14,6 +14,6 @@ Once the core features are in place, I will add support for storing data persist
 ## Getting Started
 
 1. Clone this repository.
-1. Run `npm install` from the root directory.
-1. Run `npm run build` from the root directory.
-1. Run `npm start` from the root directory.
+1. Change to the root directory.
+1. Run `npm install`.
+1. Run `npm start`.
