@@ -19,19 +19,43 @@ function displayTodoList(): void {
 
 enum Commands {
   Add = "Add New Task",
+  Complete = "Complete Task",
   Toggle = "Show/Hide Completed",
+  Purge = "Remove Completed Tasks",
   Quit = "Quit"
 }
 
 function promptAdd(): void {
   console.clear();
-  inquirer.prompt({ type: "input", name: "add", message: "Enter task:" })
-    .then(answers => {
-      if (answers["add"] !== "") {
-        todoList.addTodoItem(answers["add"]);
+  inquirer.prompt({
+    type: "input",
+    name: "add",
+    message: "Enter task:"
+  }).then(answers => {
+    if (answers["add"] !== "") {
+      todoList.addTodoItem(answers["add"]);
+    }
+    promptUser();
+  });
+}
+
+function promptComplete(): void {
+  console.clear();
+  inquirer.prompt({
+    type: "checkbox",
+    name: "complete",
+    message: "Mark Tasks Complete",
+    choices: todoList.getTodoItems(showCompleted).map(item =>
+      ({ name: item.task, value: item.id, checked: item.complete }))
+  }).then(answers => {
+    let completedTasks = answers["complete"] as number[];
+    todoList.getTodoItems(true).forEach(item => {
+      if (completedTasks.find(id => id === item.id)) {
+        todoList.markComplete(item.id);
       }
-      promptUser();
     });
+    promptUser();
+  });
 }
 
 function promptUser(): void {
@@ -51,6 +75,17 @@ function promptUser(): void {
           break;
         case Commands.Add:
           promptAdd();
+          break;
+        case Commands.Complete:
+          if (todoList.getItemsCount().incomplete > 0) {
+            promptComplete();
+          } else {
+            promptUser();
+          }
+          break;
+        case Commands.Purge:
+          todoList.removeComplete();
+          promptUser();
           break;
       }
     }
