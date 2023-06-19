@@ -1,4 +1,4 @@
-import { TodoItem } from "./todo-item";
+import { TodoItem } from "./todo-item.js";
 
 /**
  * Represents a list of to-do items.

@@ -3,7 +3,7 @@
   "version": "0.1.0-preview",
   "description": "A simple to-do list application.",
   "main": "src/index.ts",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
     "node": ">= 14"
   },
