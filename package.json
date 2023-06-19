@@ -28,7 +28,8 @@
   },
   "homepage": "https://github.com/feliperomero3/typescript-essential-book#readme",
   "dependencies": {
-    "inquirer": "^9.2.7"
+    "inquirer": "^9.2.7",
+    "lowdb": "5.1.0"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.3"
