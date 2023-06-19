@@ -1,4 +1,6 @@
 import { TodoItem } from "./todo-item.js";
+import { LowSync } from "lowdb";
+import { JSONFileSync } from "lowdb/node";
 
 /**
  * Represents a list of to-do items.
@@ -6,6 +8,7 @@ import { TodoItem } from "./todo-item.js";
 export class TodoList {
   private nextId = 1;
   private items = new Map<number, TodoItem>();
+  private db: LowSync<Schema>;
 
   /**
    * Create a new to-do list.
@@ -14,7 +17,17 @@ export class TodoList {
    * @returns A new to-do list.
    */
   constructor(public userName: string, todoItems: TodoItem[] = []) {
-    todoItems.forEach(item => this.items.set(item.id, item));
+    this.db = new LowSync<Schema>(new JSONFileSync("db.json"));
+    this.db.read();
+
+    if (this.db.data == null) {
+      this.db.data = { tasks: todoItems };
+      this.db.write();
+      todoItems.forEach(item => this.items.set(item.id, item));
+    } else {
+      this.db.data.tasks.forEach(item =>
+        this.items.set(item.id, new TodoItem(item.id, item.task, item.complete)));
+    }
   }
 
   /**
@@ -27,6 +40,7 @@ export class TodoList {
       this.nextId++;
     }
     this.items.set(this.nextId, new TodoItem(this.nextId, task));
+    this.save();
     return this.nextId;
   }
 
@@ -57,6 +71,7 @@ export class TodoList {
     const todoItem = this.getTodoById(id);
     if (todoItem) {
       todoItem.complete = true;
+      this.save();
     }
   }
 
@@ -69,6 +84,7 @@ export class TodoList {
         this.items.delete(item.id);
       }
     });
+    this.save();
   }
 
   /**
@@ -81,6 +97,14 @@ export class TodoList {
       incomplete: this.getTodoItems().length
     }
   }
+
+  /**
+   * Save the to-do list.
+   */
+  private save(): void {
+    this.db.data.tasks = [...this.items.values()];
+    this.db.write();
+  }
 }
 
 /**
@@ -89,4 +113,11 @@ export class TodoList {
 type ItemsCount = {
   total: number,
   incomplete: number
+}
+
+/**
+ * Represents the schema of the persisted to-do list.
+ */
+type Schema = {
+  tasks: { id: number, task: string, complete: boolean }[]
 }
