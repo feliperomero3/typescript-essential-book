@@ -1,6 +1,6 @@
 # Essential TypeScript
 
-A simple to-do list console application.
+A simple to-do list console application written in TypeScript inspired by the book 'Essential TypeScript Third Edition' by Adam Freeman.
 
 >The application will display a list of tasks, allow new tasks to be created, and allow existing tasks to be marked as complete.
 There will also be a filter to include already completed tasks in the list.
