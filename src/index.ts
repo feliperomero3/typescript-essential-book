@@ -1,3 +1,4 @@
+import { Commands } from "./commands.js";
 import { TodoItem } from "./todo-item.js";
 import { TodoList } from "./todo-list.js";
 import inquirer from "inquirer";
@@ -15,14 +16,6 @@ let showCompleted = true;
 function displayTodoList(): void {
   console.log(`${todoList.userName}'s To-do List ` + `(${todoList.getItemsCount().incomplete} items to do)`);
   todoList.getTodoItems(showCompleted).forEach(item => item.printDetails());
-}
-
-enum Commands {
-  Add = "Add New Task",
-  Complete = "Complete Task",
-  Toggle = "Show/Hide Completed",
-  Purge = "Remove Completed Tasks",
-  Quit = "Quit"
 }
 
 function promptAdd(): void {
