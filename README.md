@@ -8,7 +8,7 @@ Once the core features are in place, I will add support for storing data persist
 
 ## Prerequisites
 
-1. Node.js 14
+1. Node.js 20
 1. TypeScript 5
 
 ## Getting Started
