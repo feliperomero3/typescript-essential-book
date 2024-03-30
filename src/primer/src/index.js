@@ -13,3 +13,6 @@ console.log(`Total Price: ${totalPrice}`);
 
 let myVariable = "Felipe";
 console.log(`Type: ${typeof myVariable}`);
+
+myVariable = 100;
+console.log(`Type: ${typeof myVariable}`);
